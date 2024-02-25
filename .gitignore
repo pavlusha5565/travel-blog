@@ -7,7 +7,6 @@ build/
 
 ### Docker ###
 !**/src/main/docker/postgresql/
-!**/src/main/docker/pgdata/
 
 ### STS ###
 .apt_generated

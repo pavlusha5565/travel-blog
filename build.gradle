@@ -1,0 +1,49 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.2'
+	id 'org.flywaydb.flyway' version '9.22.3'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.artifactIntelligence'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+repositories {
+	mavenCentral()
+}
+
+flyway {
+	url = 'jdbc:postgresql://localhost:5432/travelbook'
+	user = 'travelbook'
+	password = 'w5a6dwqf88'
+	driver = 'org.postgresql.Driver'
+	baselineOnMigrate = true
+	locations = ['filesystem:src/main/resources/db/migration/']
+	cleanDisabled = false
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.security:spring-security-crypto'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.postgresql:postgresql'
+
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.30'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
