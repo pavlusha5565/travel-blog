@@ -6,7 +6,7 @@ build/
 !**/src/test/**/build/
 
 ### Docker ###
-!**/src/main/docker/postgresql/
+/src/main/docker/postgresql/
 
 ### STS ###
 .apt_generated
